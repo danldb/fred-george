@@ -1,8 +1,8 @@
 require 'unit'
 RSpec.describe Unit do
-  subject(:teaspoon) { Unit.new(Unit::TEASPOON, base_value: 1) }
-  let(:tablespoon) { Unit.new(Unit::TABLESPOON, base_value: 3)}
-  let(:another_teaspoon) { Unit.new(Unit::TEASPOON, base_value: 1) }
+  subject(:teaspoon) { Unit::TEASPOON }
+  let(:tablespoon) { Unit::TABLESPOON }
+  let(:another_teaspoon) { Unit::TEASPOON }
 
   it "compares itself to other unit" do
     expect(teaspoon == tablespoon).to eq(false)

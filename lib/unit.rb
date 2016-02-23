@@ -1,13 +1,9 @@
 # understands its relationship to other units
 class Unit
-  TEASPOON = Object.new
-  TABLESPOON = Object.new
+  attr_reader :base_value, :multiplier
+  protected :base_value, :multiplier
 
-  attr_reader :base_value, :type, :multiplier
-  protected :base_value, :type, :multiplier
-
-  def initialize(type, multiplier: 1, base_value:)
-    @type = type
+  def initialize(base_value, multiplier: 1)
     @base_value = base_value
     @multiplier = multiplier
   end
@@ -18,6 +14,9 @@ class Unit
   end
 
   def *(number)
-    self.class.new(type, multiplier: multiplier * number, base_value: base_value)
+    self.class.new(base_value, multiplier: multiplier * number)
   end
+
+  TEASPOON = Unit.new(1)
+  TABLESPOON = Unit.new(3)
 end
