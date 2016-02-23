@@ -6,10 +6,10 @@ class Unit
   attr_reader :base_value, :type, :multiplier
   protected :base_value, :type, :multiplier
 
-  def initialize(type, base_value:)
+  def initialize(type, multiplier: 1, base_value:)
     @type = type
     @base_value = base_value
-    @multiplier = 1
+    @multiplier = multiplier
   end
 
   def ==(other)
@@ -18,7 +18,6 @@ class Unit
   end
 
   def *(number)
-    @multiplier = multiplier * number
-    self
+    self.class.new(type, multiplier: multiplier * number, base_value: base_value)
   end
 end
